@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.DeviceProductConfigMapper">
+
+    <resultMap id="BaseResultMap" type="com.en.springbootinit.model.entity.DeviceProductConfig">
+            <id property="id" column="id" />
+            <result property="deviceSn" column="device_sn" />
+            <result property="channelNo" column="channel_no" />
+            <result property="skuId" column="sku_id" />
+            <result property="devicePrice" column="device_price" />
+            <result property="currentStock" column="current_stock" />
+            <result property="createdAt" column="created_at" />
+            <result property="updatedAt" column="updated_at" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,device_sn,channel_no,sku_id,device_price,current_stock,
+        created_at,updated_at
+    </sql>
+</mapper>

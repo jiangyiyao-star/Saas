@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.DeviceTypeMapper">
+
+    <resultMap id="BaseResultMap" type="com.en.springbootinit.model.entity.DeviceType">
+            <id property="id" column="id" />
+            <result property="typeName" column="type_name" />
+            <result property="configInfo" column="config_info" />
+            <result property="keyParameters" column="key_parameters" />
+            <result property="category" column="category" />
+            <result property="deviceCode" column="device_code" />
+            <result property="isDeleted" column="is_deleted" />
+            <result property="createdAt" column="created_at" />
+            <result property="updatedAt" column="updated_at" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,type_name,config_info,key_parameters,category,device_code,
+        is_deleted,created_at,updated_at
+    </sql>
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.ProductInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.en.springbootinit.model.entity.ProductInfo">
+            <id property="id" column="id" />
+            <result property="productCode" column="product_code" />
+            <result property="productName" column="product_name" />
+            <result property="brandId" column="brand_id" />
+            <result property="primaryCategory" column="primary_category" />
+            <result property="subCategory" column="sub_category" />
+            <result property="supplierId" column="supplier_id" />
+            <result property="originPlace" column="origin_place" />
+            <result property="shelfLifeDays" column="shelf_life_days" />
+            <result property="globalStatus" column="global_status" />
+            <result property="imageUrl" column="image_url" />
+            <result property="description" column="description" />
+            <result property="isDeleted" column="is_deleted" />
+            <result property="createdAt" column="created_at" />
+            <result property="updatedAt" column="updated_at" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,product_code,product_name,brand_id,primary_category,sub_category,
+        supplier_id,origin_place,shelf_life_days,global_status,image_url,
+        description,is_deleted,created_at,updated_at
+    </sql>
+</mapper>

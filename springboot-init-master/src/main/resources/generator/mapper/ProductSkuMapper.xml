@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.ProductSkuMapper">
+
+    <resultMap id="BaseResultMap" type="com.en.springbootinit.model.entity.ProductSku">
+            <id property="id" column="id" />
+            <result property="productId" column="product_id" />
+            <result property="skuName" column="sku_name" />
+            <result property="skuCode" column="sku_code" />
+            <result property="alcoholAbv" column="alcohol_abv" />
+            <result property="capacity" column="capacity" />
+            <result property="basePrice" column="base_price" />
+            <result property="skuImageUrl" column="sku_image_url" />
+            <result property="isDeleted" column="is_deleted" />
+            <result property="createdAt" column="created_at" />
+            <result property="updatedAt" column="updated_at" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,product_id,sku_name,sku_code,alcohol_abv,capacity,
+        base_price,sku_image_url,is_deleted,created_at,updated_at
+    </sql>
+</mapper>
