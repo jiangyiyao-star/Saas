@@ -254,4 +254,44 @@ INSERT INTO `product_formula` (`sku_id`, `raw_material_id`, `consume_qty`, `cons
 INSERT INTO `owner_product_price` (`owner_id`, `sku_id`, `retail_price`, `owner_status`) VALUES
                                                                                              (101, 1, 20.00, 1), -- 商户101 把青岛500ml SKU 定价为 20元
                                                                                              (101, 2, 16.00, 1), -- 商户101 把雪花500ml SKU 定价为 16元
-                                                                                             (102, 1, 18.00, 1); -- 商户102 把青岛500ml SKU 定价为 18元
+                                                                                             (102, 1, 18.00, 1);
+
+
+-- 补充设备心跳数据 (每条记录模拟不同时间点的状态上报)
+INSERT INTO `device_heartbeat_log` (`device_sn`, `report_time`, `signal_strength`, `temperature`, `ip_address`) VALUES
+-- 正常设备 SN-A001 的连续心跳 (温度稳定在 3.5度 左右，信号良好)
+('SN-A001', DATE_SUB(NOW(), INTERVAL 60 MINUTE), 95, 3.5, '192.168.1.101'),
+('SN-A001', DATE_SUB(NOW(), INTERVAL 45 MINUTE), 96, 3.6, '192.168.1.101'),
+('SN-A001', DATE_SUB(NOW(), INTERVAL 30 MINUTE), 95, 3.4, '192.168.1.101'),
+('SN-A001', DATE_SUB(NOW(), INTERVAL 15 MINUTE), 94, 3.5, '192.168.1.101'),
+('SN-A001', NOW(), 95, 3.5, '192.168.1.101'),
+
+-- 正常设备 SN-B001 的连续心跳 (温度稳定，但信号稍弱)
+('SN-B001', DATE_SUB(NOW(), INTERVAL 60 MINUTE), 75, 4.2, '10.0.0.51'),
+('SN-B001', DATE_SUB(NOW(), INTERVAL 30 MINUTE), 73, 4.3, '10.0.0.51'),
+('SN-B001', NOW(), 76, 4.2, '10.0.0.51'),
+
+-- 故障设备 SN-B002 的连续心跳 (模拟制冷故障，温度从 5.5度 飙升到 12.5度)
+('SN-B002', DATE_SUB(NOW(), INTERVAL 120 MINUTE), 88, 5.5, '10.0.0.52'),
+('SN-B002', DATE_SUB(NOW(), INTERVAL 90 MINUTE), 89, 8.2, '10.0.0.52'),
+('SN-B002', DATE_SUB(NOW(), INTERVAL 60 MINUTE), 87, 10.5, '10.0.0.52'),
+('SN-B002', DATE_SUB(NOW(), INTERVAL 30 MINUTE), 85, 11.8, '10.0.0.52'),
+('SN-B002', NOW(), 86, 12.5, '10.0.0.52');-- 商户102 把青岛500ml SKU 定价为 18元
+
+
+
+-- 补充设备故障告警数据
+INSERT INTO `device_fault_log` (`device_sn`, `fault_code`, `fault_desc`, `severity`, `status`, `occur_time`, `resolve_time`, `handler_id`, `resolve_remark`) VALUES
+-- 严重故障，且处于“待处理(0)”状态
+('SN-B002', 'ERR_TEMP_HIGH', '制冷系统异常，核心温度持续偏高超10度', 3, 0, DATE_SUB(NOW(), INTERVAL 2 HOUR), NULL, NULL, NULL),
+('SN-B002', 'ERR_CO2_LOW', '辅助气体二氧化碳压力过低，无法出酒', 3, 0, DATE_SUB(NOW(), INTERVAL 3 HOUR), NULL, NULL, NULL),
+
+-- 一般预警，处于“待处理(0)”状态
+('SN-A001', 'WARN_STOCK_LOW', '1号酒头(青岛生啤)库存低于10%', 2, 0, DATE_SUB(NOW(), INTERVAL 5 HOUR), NULL, NULL, NULL),
+
+-- 严重故障，处于“处理中(1)”状态 (已有处理人接单，但还未解决完毕)
+('SN-A002', 'ERR_COMPRESSOR', '压缩机启动失败，电流过载', 3, 1, DATE_SUB(NOW(), INTERVAL 1 DAY), NULL, 101, '已现场排查，正在等待新压缩机配件调拨更换'),
+
+-- 一般预警，处于“已解决(2)”状态 (已记录解决时间和处理备注)
+('SN-B001', 'WARN_NET_WEAK', '网络信号持续弱于80', 1, 2, DATE_SUB(NOW(), INTERVAL 3 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), 102, '店员已将设备移出死角，信号恢复正常'),
+('SN-A001', 'WARN_DOOR_OPEN', '设备下半部储藏柜门未关严', 1, 2, DATE_SUB(NOW(), INTERVAL 5 DAY), DATE_SUB(NOW(), INTERVAL 5 DAY), 101, '联系店员，店员已重新锁紧柜门');

@@ -1,9 +1,10 @@
 package com.en.springbootinit.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.en.springbootinit.mapper.DeviceInfoMapper;
 import com.en.springbootinit.model.entity.DeviceInfo;
 import com.en.springbootinit.service.DeviceInfoService;
-import generator.mapper.DeviceInfoMapper;
+
 import org.springframework.stereotype.Service;
 
 /**

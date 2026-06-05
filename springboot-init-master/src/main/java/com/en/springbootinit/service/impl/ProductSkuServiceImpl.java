@@ -1,9 +1,10 @@
 package com.en.springbootinit.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.en.springbootinit.mapper.ProductSkuMapper;
 import com.en.springbootinit.model.entity.ProductSku;
 import com.en.springbootinit.service.ProductSkuService;
-import generator.mapper.ProductSkuMapper;
+
 import org.springframework.stereotype.Service;
 
 /**

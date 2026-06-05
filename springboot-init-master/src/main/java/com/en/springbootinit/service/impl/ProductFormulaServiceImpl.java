@@ -1,9 +1,10 @@
 package com.en.springbootinit.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.en.springbootinit.mapper.ProductFormulaMapper;
 import com.en.springbootinit.model.entity.ProductFormula;
 import com.en.springbootinit.service.ProductFormulaService;
-import generator.mapper.ProductFormulaMapper;
+
 import org.springframework.stereotype.Service;
 
 /**

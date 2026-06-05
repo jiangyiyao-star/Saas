@@ -1,9 +1,10 @@
 package com.en.springbootinit.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.en.springbootinit.mapper.ProductInfoMapper;
 import com.en.springbootinit.model.entity.ProductInfo;
 import com.en.springbootinit.service.ProductInfoService;
-import generator.mapper.ProductInfoMapper;
+
 import org.springframework.stereotype.Service;
 
 /**

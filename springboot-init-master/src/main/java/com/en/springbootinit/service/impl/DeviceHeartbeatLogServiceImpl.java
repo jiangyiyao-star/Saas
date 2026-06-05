@@ -1,9 +1,10 @@
 package com.en.springbootinit.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.en.springbootinit.mapper.DeviceHeartbeatLogMapper;
 import com.en.springbootinit.model.entity.DeviceHeartbeatLog;
 import com.en.springbootinit.service.DeviceHeartbeatLogService;
-import generator.mapper.DeviceHeartbeatLogMapper;
+
 import org.springframework.stereotype.Service;
 
 /**

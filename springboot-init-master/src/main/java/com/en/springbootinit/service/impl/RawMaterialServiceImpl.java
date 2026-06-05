@@ -1,9 +1,10 @@
 package com.en.springbootinit.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.en.springbootinit.mapper.RawMaterialMapper;
 import com.en.springbootinit.model.entity.RawMaterial;
 import com.en.springbootinit.service.RawMaterialService;
-import generator.mapper.RawMaterialMapper;
+
 import org.springframework.stereotype.Service;
 
 /**
